@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Ex8</string>
+    <string name="intro">Hello, you can use this application to check your skills on temrature conversation, or calculate the correct value.</string>
+</resources>
