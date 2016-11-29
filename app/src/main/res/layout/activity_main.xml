@@ -19,34 +19,6 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/textView">
-
-        <RadioGroup
-            android:layout_width="match_parent"
-            android:layout_height="65dp" >
-
-            <RadioButton
-                android:text="check"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/radioButton3"
-                android:layout_weight="1" />
-
-            <RadioButton
-                android:text="calculate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/radioButton4"
-                android:layout_weight="1" />
-        </RadioGroup>
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
         android:layout_height="198dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
@@ -57,20 +29,78 @@
             android:layout_height="wrap_content"
             android:inputType="number"
             android:ems="10"
-            android:id="@+id/editText2"
-            android:layout_weight="0.52" />
+            android:id="@+id/edFarenheit"
+            android:layout_weight="0.52"
+            android:enabled="false"/>
 
         <Button
-            android:text="Button"
+            android:text="go!"
             android:layout_width="67dp"
             android:layout_height="wrap_content"
-            android:id="@+id/button" />
+            android:id="@+id/button"
+            android:onClick="action"
+            android:enabled="false"/>
 
         <EditText
             android:layout_width="129dp"
             android:layout_height="wrap_content"
             android:inputType="number"
             android:ems="10"
-            android:id="@+id/editText" />
+            android:id="@+id/edCelsius"
+            android:enabled="false"/>
     </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="59dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true">
+
+        <TextView
+            android:text="farenheit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView4"
+            android:layout_weight="0.43" />
+
+        <TextView
+            android:text="cesius"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView3"
+            android:layout_weight="0.07" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="43dp">
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:id="@+id/radioGroup">
+
+            <RadioButton
+                android:text="check"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/checkRd"
+                android:layout_weight="1"
+                />
+
+            <RadioButton
+                android:text="calculate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/calcRd"
+                android:layout_weight="1"
+                />
+        </RadioGroup>
+    </LinearLayout>
+
 </RelativeLayout>
