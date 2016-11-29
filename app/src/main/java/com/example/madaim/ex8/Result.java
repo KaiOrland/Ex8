@@ -27,10 +27,16 @@ public class Result extends AppCompatActivity {
 
 
 
-    public void rightAns(View v){
+    public void text(View v){
 
-        String message = getResources().getString(R.string.success);
+        if((farenheit!=0)&&(celsius!=0)){
+            if(celsius==(farenheit-32)*(5/9)){
+                String success = getResources().getString(R.string.success);
+               // tv.setText(success, Double.toString();
+            }
+        }
 
-       // tv.setText(message, );
+
+       //
     }
 }

@@ -66,6 +66,16 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else{
 
+                    if(!ed1.getText().toString().equals("")){
+                        intent.putExtra("checkFar", var1 );
+                        intent.setAction(ACTION_CALC);
+                        startActivity(intent);
+                    }
+                    else{
+                        intent.putExtra("checkCel", var2 );
+                        intent.setAction(ACTION_CALC);
+                        startActivity(intent);
+                    }
                 }
 
             }
