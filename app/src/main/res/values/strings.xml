@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Ex8</string>
     <string name="intro">Hello, you can use this application to check your skills on temrature conversation, or calculate the correct value.</string>
-    <string name="success">Bravo! the temprature [%1$d] C is indeed [%2$d] F</string>
+    <string name="success">Bravo! the temprature [%1$f] C is indeed [%2$f] F</string>
     <string name="fail">Oops! your answer is wrong, you may want to try again.</string>
+    <string name="calculateFar">The temprature [%1$f] F, is converted to [%2$f] C</string>
+    <string name="calculateCel">The temprature [%1$f] C, is converted to [%2$f] F</string>
 </resources>

@@ -65,7 +65,7 @@
             android:layout_weight="0.43" />
 
         <TextView
-            android:text="cesius"
+            android:text="celsius"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textView3"
