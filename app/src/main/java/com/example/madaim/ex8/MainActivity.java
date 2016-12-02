@@ -30,8 +30,12 @@ public class MainActivity extends AppCompatActivity {
         rGroup = (RadioGroup)findViewById(R.id.radioGroup);
         String StrVar1 = ed1.getText().toString();
         var1 = Double.parseDouble(StrVar1);
+        if (StrVar1 != null && !StrVar1.equals("")) {
+            var1 = Double.parseDouble(StrVar1);
+        }
         String StrVar2 = ed2.getText().toString();
-        var2 = Double.parseDouble(StrVar2);
+        if (StrVar1 != null && !StrVar1.equals("")) {
+            var2 = Double.parseDouble(StrVar2);
 
         rGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
         {
