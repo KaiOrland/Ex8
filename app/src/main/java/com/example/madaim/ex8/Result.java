@@ -1,5 +1,6 @@
 package com.example.madaim.ex8;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class Result extends AppCompatActivity {
+public class Result extends Activity {
 
     double farenheit;
     double celsius;

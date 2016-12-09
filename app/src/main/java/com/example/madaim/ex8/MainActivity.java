@@ -1,17 +1,25 @@
 package com.example.madaim.ex8;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.SpannableString;
 import android.text.TextWatcher;
+import android.text.style.ForegroundColorSpan;
+import android.view.ContextMenu;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
-public class MainActivity extends AppCompatActivity implements TextWatcher {
+public class MainActivity extends Activity implements TextWatcher {
 
     Button b1;
     EditText ed1;
@@ -82,6 +90,9 @@ public class MainActivity extends AppCompatActivity implements TextWatcher {
 
                 }
             });
+
+        registerForContextMenu(ed1);
+        registerForContextMenu(ed2);
         }
 
     @Override
@@ -93,6 +104,8 @@ public class MainActivity extends AppCompatActivity implements TextWatcher {
     public void onTextChanged(CharSequence s, int start, int before, int count) {
 
     }
+
+
 
     @Override
     public void afterTextChanged(Editable s) {
@@ -119,30 +132,61 @@ public class MainActivity extends AppCompatActivity implements TextWatcher {
             }
     }
 
-
-   /*public void action(View v){
-        String StrVar1 = ed1.getText().toString();
-        var1 = Double.parseDouble(StrVar1);
-        String StrVar2 = ed2.getText().toString();
-        var2 = Double.parseDouble(StrVar2);
-
-        switch(v.getId()) {
-            case R.id.checkRd:
-                b1.setEnabled(true);
-                if (R.id.button) {
-                    Intent intent = new Intent(this, Result.class);
-                    intent.putExtra("checkVar", );
-                    startActivityForResult(intent, );
-                }
-                break;
-            case R.id.calcRd:
-                if (R.id.button) {
-                    b1.setEnabled(true);
-                    Intent intent = new Intent(this, Result.class);
-                    startActivityForResult(intent, );
-                }
-                break;
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        getMenuInflater().inflate(R.menu.context, menu);
+        int color = ((EditText)v).getCurrentTextColor();
+        int menuId = color==Color.BLUE?R.id.colorBlue:color==Color.GREEN?R.id.colorGreen:R.id.colorRed;
+        menu.findItem(menuId).setChecked(true);
+        int[] colors = new int[]{Color.RED, Color.rgb(0,153,0), Color.BLUE};
+        for (int i = 0; i<colors.length;i++)
+        {
+            MenuItem item = menu.getItem(i);
+            SpannableString s  = new SpannableString(item.getTitle());
+            s.setSpan(new ForegroundColorSpan(colors[i]), 0,s.length(),0);
+            item.setTitle(s);
         }
-        }
-        */
+
+        super.onCreateContextMenu(menu, v, menuInfo);
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        switch(id)
+        {
+            case R.id.action_help:
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("https://en.wikipedia.org/wiki/Conversion_of_units_of_temperature"));
+                startActivity(intent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        MyEditText.MyMenuInfo menuInfo = (MyEditText.MyMenuInfo) item.getMenuInfo();
+        EditText ed = menuInfo.ed;
+        switch(item.getItemId()){
+            case R.id.colorRed:
+                ed.setTextColor(Color.RED);
+                break;
+            case R.id.colorGreen:
+                ed.setTextColor(Color.GREEN);
+                break;
+            case R.id.colorBlue:
+                ed.setTextColor(Color.BLUE);
+                break;
+        }
+        return super.onContextItemSelected(item);
+    }
+
+}

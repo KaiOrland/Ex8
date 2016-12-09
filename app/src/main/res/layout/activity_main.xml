@@ -24,7 +24,7 @@
         android:layout_alignParentBottom="true"
         android:weightSum="1">
 
-        <EditText
+        <com.example.madaim.ex8.MyEditText
             android:layout_width="133dp"
             android:layout_height="wrap_content"
             android:inputType="number"
@@ -41,7 +41,7 @@
             android:onClick="action"
             android:enabled="false"/>
 
-        <EditText
+        <com.example.madaim.ex8.MyEditText
             android:layout_width="129dp"
             android:layout_height="wrap_content"
             android:inputType="number"
