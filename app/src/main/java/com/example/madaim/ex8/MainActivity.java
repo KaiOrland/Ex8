@@ -28,6 +28,7 @@ public class MainActivity extends Activity implements TextWatcher {
     double var1;
     double var2;
     boolean radioCheck;
+    static int menuId;
 
     public final static String ACTION_CHECK = "com.example.madaim.ex8.check";
     public final static String ACTION_CALC = "com.example.madaim.ex8.calc";
@@ -136,7 +137,7 @@ public class MainActivity extends Activity implements TextWatcher {
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         getMenuInflater().inflate(R.menu.context, menu);
         int color = ((EditText)v).getCurrentTextColor();
-        int menuId = color==Color.BLUE?R.id.colorBlue:color==Color.GREEN?R.id.colorGreen:R.id.colorRed;
+        menuId = color==Color.BLUE?R.id.colorBlue:color==Color.GREEN?R.id.colorGreen:R.id.colorRed;
         menu.findItem(menuId).setChecked(true);
         int[] colors = new int[]{Color.RED, Color.rgb(0,153,0), Color.BLUE};
         for (int i = 0; i<colors.length;i++)
@@ -148,6 +149,19 @@ public class MainActivity extends Activity implements TextWatcher {
         }
 
         super.onCreateContextMenu(menu, v, menuInfo);
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle savedInstanceState) {
+
+        savedInstanceState.putInt("menuId", menuId);
+        super.onSaveInstanceState(savedInstanceState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        menuId = savedInstanceState.getInt("menuId");
+        super.onRestoreInstanceState(savedInstanceState);
     }
 
     @Override
