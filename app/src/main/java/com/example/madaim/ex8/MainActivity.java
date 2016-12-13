@@ -39,6 +39,12 @@ public class MainActivity extends Activity implements TextWatcher {
         b1 = (Button) findViewById(R.id.button);
         ed1 = (EditText) findViewById(R.id.edFarenheit);
         ed2 = (EditText) findViewById(R.id.edCelsius);
+        if(savedInstanceState != null) {
+            int farColor = savedInstanceState.getInt("farClr");
+            int celColor = savedInstanceState.getInt("celClr");
+            ed1.setTextColor(farColor);
+            ed1.setTextColor(celColor);
+        }
         rGroup = (RadioGroup) findViewById(R.id.radioGroup);
         ed1.addTextChangedListener(this);
         ed2.addTextChangedListener(this);
@@ -153,14 +159,16 @@ public class MainActivity extends Activity implements TextWatcher {
 
     @Override
     protected void onSaveInstanceState(Bundle savedInstanceState) {
-
-        savedInstanceState.putInt("menuId", menuId);
+        int farColor=ed1.getCurrentTextColor();
+        int celColor=ed2.getCurrentTextColor();
+        savedInstanceState.putInt("celClr", celColor);
+        savedInstanceState.putInt("farClr", farColor);
         super.onSaveInstanceState(savedInstanceState);
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        menuId = savedInstanceState.getInt("menuId");
+
         super.onRestoreInstanceState(savedInstanceState);
     }
 
