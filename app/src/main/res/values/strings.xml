@@ -5,4 +5,6 @@
     <string name="fail">Oops! your answer is wrong, you may want to try again.</string>
     <string name="calculateFar">The temprature [%1$f] F, is converted to [%2$f] C</string>
     <string name="calculateCel">The temprature [%1$f] C, is converted to [%2$f] F</string>
+    <string name="exitTitle">Closing The Application</string>
+    <string name="sure">are you sure?</string>
 </resources>

@@ -19,7 +19,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
-public class MainActivity extends Activity implements TextWatcher {
+public class MainActivity extends Activity implements TextWatcher, MyDialog.ResultsListener {
 
     Button b1;
     EditText ed1;
@@ -29,7 +29,8 @@ public class MainActivity extends Activity implements TextWatcher {
     double var2;
     boolean radioCheck;
     static int menuId;
-
+    int farColor = Color.BLACK;
+    int celColor = Color.BLACK;
     public final static String ACTION_CHECK = "com.example.madaim.ex8.check";
     public final static String ACTION_CALC = "com.example.madaim.ex8.calc";
     @Override
@@ -40,11 +41,11 @@ public class MainActivity extends Activity implements TextWatcher {
         ed1 = (EditText) findViewById(R.id.edFarenheit);
         ed2 = (EditText) findViewById(R.id.edCelsius);
         if(savedInstanceState != null) {
-            int farColor = savedInstanceState.getInt("farClr");
-            int celColor = savedInstanceState.getInt("celClr");
-            ed1.setTextColor(farColor);
-            ed1.setTextColor(celColor);
+            farColor = savedInstanceState.getInt("farClr");
+            celColor = savedInstanceState.getInt("celClr");
+
         }
+
         rGroup = (RadioGroup) findViewById(R.id.radioGroup);
         ed1.addTextChangedListener(this);
         ed2.addTextChangedListener(this);
@@ -98,6 +99,8 @@ public class MainActivity extends Activity implements TextWatcher {
                 }
             });
 
+        ed1.setTextColor(farColor);
+        ed2.setTextColor(celColor);
         registerForContextMenu(ed1);
         registerForContextMenu(ed2);
         }
@@ -183,6 +186,9 @@ public class MainActivity extends Activity implements TextWatcher {
                 intent.setData(Uri.parse("https://en.wikipedia.org/wiki/Conversion_of_units_of_temperature"));
                 startActivity(intent);
                 return true;
+            case R.id.action_exit:
+                MyDialog.newInstance(MyDialog.EXIT_DIALOG).show(getFragmentManager(), null);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -209,6 +215,17 @@ public class MainActivity extends Activity implements TextWatcher {
                 break;
         }
         return super.onContextItemSelected(item);
+    }
+    @Override
+    public void onFinishedDialog(int requestCode, Object results){
+        switch(requestCode){
+            case MyDialog.EXIT_DIALOG:
+                finish();
+                System.exit(0);
+                break;
+            case MyDialog.PRECISION_DIALOG:
+                break;
+        }
     }
 
 }
