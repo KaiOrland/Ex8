@@ -21,20 +21,30 @@
             android:layout_height="wrap_content"
             android:id="@+id/seekBar2"
             android:layout_weight="0.66"
+            android:max="4"
             />
 
         <TextView
             android:text="full"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/textView5"
+            android:id="@+id/textView4"
             android:layout_weight="0.00" />
     </LinearLayout>
 
-    <TextView
-        android:text="TextView"
-        android:layout_width="220dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView7" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/amount"
+            android:layout_marginTop="17dp"
+            android:layout_marginEnd="19dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true" />
+    </RelativeLayout>
 
 </LinearLayout>

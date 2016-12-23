@@ -33,6 +33,7 @@ public class MainActivity extends Activity implements TextWatcher, MyDialog.Resu
     int celColor = Color.BLACK;
     public final static String ACTION_CHECK = "com.example.madaim.ex8.check";
     public final static String ACTION_CALC = "com.example.madaim.ex8.calc";
+    int currentPrecision = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,6 +79,7 @@ public class MainActivity extends Activity implements TextWatcher, MyDialog.Resu
                         var2 = Double.parseDouble(StrVar2);
 
                     Intent intent = new Intent(MainActivity.this, Result.class);
+                    intent.putExtra("precision", currentPrecision);
                     if (rGroup.getCheckedRadioButtonId() == R.id.checkRd) {
                         intent.putExtra("checkFar", var1);
                         intent.putExtra("checkCel", var2);
@@ -189,6 +191,9 @@ public class MainActivity extends Activity implements TextWatcher, MyDialog.Resu
             case R.id.action_exit:
                 MyDialog.newInstance(MyDialog.EXIT_DIALOG).show(getFragmentManager(), null);
                 return true;
+            case R.id.action_settings:
+                MyDialog.newInstance(MyDialog.PRECISION_DIALOG).show(getFragmentManager(), null);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -224,8 +229,13 @@ public class MainActivity extends Activity implements TextWatcher, MyDialog.Resu
                 System.exit(0);
                 break;
             case MyDialog.PRECISION_DIALOG:
+                currentPrecision = (Integer)results;
                 break;
+
         }
+    }
+    public int getCurrentPrecision(){
+        return currentPrecision;
     }
 
 }
